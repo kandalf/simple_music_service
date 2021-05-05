@@ -15,10 +15,6 @@ module Validators
       if assert_present :year
         assert_numeric :year
       end
-
-      if total_duration
-        assert_numeric :total_duration
-      end
     end
   end
 end
