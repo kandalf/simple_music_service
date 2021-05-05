@@ -40,3 +40,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pg'
+gem 'scrivener'
+
+group :test do
+  gem "minitest"
+  gem "minitest-rails"
+end
