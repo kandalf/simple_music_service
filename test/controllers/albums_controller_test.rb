@@ -30,18 +30,37 @@ describe AlbumsController do
   end
 
   it "should require mandatory fields" do
-     params = {}
+    params = {}
 
-     res = post("/albums", params)
+    res = post("/albums", params)
 
-     assert_equal 400, res.status
-     assert_equal "application/json; charset=utf-8", res.headers["Content-type"]
+    assert_equal 400, res.status
+    assert_equal "application/json; charset=utf-8", res.headers["Content-type"]
 
-     body = JSON.parse(res.body)
+    body = JSON.parse(res.body)
 
-     assert_equal ["not_present"], body["errors"]["name"]
-     assert_equal ["not_present"], body["errors"]["year"]
+    assert_equal ["not_present"], body["errors"]["name"]
+    assert_equal ["not_present"], body["errors"]["year"]
 
-     assert_equal @album_count, Album.count
+    assert_equal @album_count, Album.count
+  end
+
+  it "should validate format" do
+    params = {
+      name: "Ten",
+      year: "ABCD",
+      album_art: "https://en.wikipedia.org/wiki/Ten_(Pearl_Jam_album)#/media/File:PearlJam-Ten2.jpg" ,
+    }
+
+    res = post("/albums", params)
+
+    assert_equal 400, res.status
+    assert_equal "application/json; charset=utf-8", res.headers["Content-type"]
+
+    body = JSON.parse(res.body)
+
+    assert_equal ["not_numeric"], body["errors"]["year"]
+
+    assert_equal @album_count, Album.count
   end
 end
