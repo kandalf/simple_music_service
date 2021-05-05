@@ -4,7 +4,7 @@ class CreateAlbums < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :year
       t.string :album_art
-      t.integer :total_duration
+      t.integer :total_duration, default: 0
       t.json :cached_songs
 
       t.timestamps
