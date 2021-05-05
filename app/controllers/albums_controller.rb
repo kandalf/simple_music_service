@@ -1,8 +1,6 @@
 require_relative "../../lib/validators/create_album"
 
 class AlbumsController < ApplicationController
-  include Response
-
   def create
     validator = Validators::CreateAlbum.new(album_params)
 
