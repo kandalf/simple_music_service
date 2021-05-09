@@ -41,8 +41,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pg'
 gem 'scrivener'
+gem 'scoped-concerns'
 
 group :test do
   gem "minitest"
   gem "minitest-rails"
+  gem "spawn"
 end
