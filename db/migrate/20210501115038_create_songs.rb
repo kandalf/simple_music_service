@@ -8,11 +8,12 @@ class CreateSongs < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :duration
       t.integer :streams
+      t.string :genre, index: true
 
       t.timestamps
     end
 
-    add_column :songs, :genre, :genre, index: true
+    #add_column :songs, :genre, :genre, index: true
   end
 
   def down
