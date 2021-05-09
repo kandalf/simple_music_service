@@ -13,6 +13,6 @@ module Response
   end
 
   def json_error(message = "Internal Server Error", extra_headers = {})
-    json_response({ message: message }, :error, extra_headers)
+    json_response({ message: message }, :internal_server_error, extra_headers)
   end
 end
